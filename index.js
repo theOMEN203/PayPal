@@ -12,27 +12,25 @@ app.get('/', async (req, res) => {
     const userIP = req.headers['x-forwarded-for']?.split(',')[0] || req.socket.remoteAddress;
 
     try {
-        const response = await axios.get(`http://ip-api.com/json/${userIP}?fields=status,message,country,regionName,city,isp,org,proxy,hosting,query`);
+        const response = await axios.get(`https://ip-api.com/json/${userIP}?fields=status,message,country,regionName,city,isp,org,proxy,hosting,query`);
         const data = response.data;
 
-        // Log if VPN detected (proxy or hosting)
         const isVPN = data.proxy || data.hosting;
 
         if (isVPN) {
-            const log = `[VPN DETECTED] IP: ${data.query} | ISP: ${data.isp} | Country: ${data.country} | Host: ${data.hosting}\n`;
+            const timestamp = new Date().toISOString();
+            const log = `[${timestamp}] [VPN DETECTED] IP: ${data.query} | ISP: ${data.isp} | Country: ${data.country} | Host: ${data.hosting}\n`;
             console.log(log);
-
-            // Optional: also write to a file
             fs.appendFileSync('vpn-log.txt', log);
         }
 
-        // Show only basic info to the user
         res.render('landing', {
             ip: data.query,
             country: data.country,
         });
 
     } catch (err) {
+        console.error("Error fetching IP info:", err.message);
         res.send('Something went wrong.');
     }
 });
