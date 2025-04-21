@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome</title>
+    <title>Gotcha!</title>
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 100px; }
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
     </style>
 </head>
 <body>
-    <h1>LMAOOOOO!</h1>
-    <p>Your IP (as seen by server): <%= ip %></p>
-    <p style="color:red; font-weight: bold;">L you gave your location away!</p>
+    <h1>Bruh, you gave your location away!</h1>
+    <p>Your IP: <%= ip %></p>
+    <p>Country: <%= country %></p>
 
-    <script src="/detect.js"></script>
+    <script src="/fingerprint.js"></script>
+    <script>
+        // Send IP from server side to client JS
+        const serverIP = "<%= ip %>";
+    </script>
 </body>
 </html>
