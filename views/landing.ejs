@@ -8,17 +8,13 @@
             text-align: center;
             margin-top: 100px;
         }
-        .alert {
-            margin-top: 20px;
-            font-size: 20px;
-            color: red;
-        }
     </style>
 </head>
 <body>
     <h1>Welcome to our site!</h1>
     <p>Your IP: <%= ip %></p>
     <p>Country: <%= country %></p>
-    <div class="alert">Bruh you gave your location away 😭</div>
+    <p><strong>VPN detected?</strong> <%= vpn %></p>
+    <p style="color:red; font-weight: bold;">Bruh you gave your location away!</p>
 </body>
 </html>
