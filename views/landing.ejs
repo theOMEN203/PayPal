@@ -3,18 +3,14 @@
 <head>
     <title>Welcome</title>
     <style>
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
+        body { font-family: sans-serif; text-align: center; margin-top: 100px; }
     </style>
 </head>
 <body>
     <h1>Welcome to our site!</h1>
-    <p>Your IP: <%= ip %></p>
-    <p>Country: <%= country %></p>
-    <p><strong>VPN detected?</strong> <%= vpn %></p>
+    <p>Your IP (as seen by server): <%= ip %></p>
     <p style="color:red; font-weight: bold;">Bruh you gave your location away!</p>
+
+    <script src="/detect.js"></script>
 </body>
 </html>
